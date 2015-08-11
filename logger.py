@@ -20,10 +20,24 @@ user_url = 'http://ethpool.org/balance/e35c3cda59d0e88e0d76f72ea199f224c7d499ad'
 
 print '- Init. done ~ starting now -'
 
+def BalanceUnit(raw_shares, shares_str):
+	#print 'starting balanceUnit()'
+	unit = shares_str.split()[2]
+	#print ('UNIT IS - %s') % unit
+	value = re.compile("([0-9]*\.[0-9]*)", 0).search(shares_str).group(1)
+	#print ('VALUE IS - %s') % value
+	if(unit == 'Finney'):
+		print 'unit is Finney\nAdjusting to Ether...'
+		outValue = value*(0.001)
+	else:
+		outValue = value
+
+	return outValue
+
+
 def getMetrics(user_url):
 	reg = "([0-9]*\.[0-9]*)"
-	page = scraper.get(user_url).content
-	page_source = page.text
+	page_source = scraper.get(user_url).content
 
 	tree = lxml.html.document_fromstring(page_source)
 	raw_shares = tree.xpath(".//div[@id='home' and @class='container']//ul[1]/li[2]/text()")
@@ -31,7 +45,8 @@ def getMetrics(user_url):
 
 	try:
 		shares_str = str(raw_shares[0])
-		shares = match = re.compile(reg, 0).search(shares_str).group(1)
+		print ('SHARES STR - %s') % shares_str
+		shares = BalanceUnit(raw_shares, shares_str)
 	except:
 		print "parse error @ shares!"
 		pass
