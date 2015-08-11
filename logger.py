@@ -1,7 +1,10 @@
 #just tracks a given user's share value on EtherPool
 
-import requests, arrow, lxml.html, time, sys
+import arrow, lxml.html, time, sys
 import re
+import cfscrape # to circumvent cloudflare anti DDOS 
+
+scraper = cfscrape.create_scraper()
 
 from decimal import Decimal as D
 from blessed import Terminal
@@ -19,7 +22,7 @@ print '- Init. done ~ starting now -'
 
 def getMetrics(user_url):
 	reg = "([0-9]*\.[0-9]*)"
-	page = requests.get(user_url)
+	page = scraper.get(user_url).content
 	page_source = page.text
 
 	tree = lxml.html.document_fromstring(page_source)
@@ -58,7 +61,7 @@ while(True):
 	
 	metrics_A = getMetrics(user_url)
 	#print '%s -- %s' % (metrics[0], metrics[1])
-	time.sleep(1)
+	time.sleep(5)
 	metrics_B = getMetrics(user_url)
 
 	#if(metrics_A["shares"] == metrics_B["shares"] and metrics_A["hash-rate"] == metrics_B["hash-rate"]):
