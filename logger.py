@@ -45,7 +45,7 @@ def getMetrics(user_url):
 
 	try:
 		shares_str = str(raw_shares[0])
-		print ('SHARES STR - %s') % shares_str
+		#print ('SHARES STR - %s') % shares_str
 		shares = BalanceUnit(raw_shares, shares_str)
 	except:
 		print "parse error @ shares!"
@@ -76,7 +76,7 @@ while(True):
 	
 	metrics_A = getMetrics(user_url)
 	#print '%s -- %s' % (metrics[0], metrics[1])
-	time.sleep(5)
+	time.sleep(10)
 	metrics_B = getMetrics(user_url)
 
 	#if(metrics_A["shares"] == metrics_B["shares"] and metrics_A["hash-rate"] == metrics_B["hash-rate"]):
