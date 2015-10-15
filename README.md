@@ -9,6 +9,10 @@ EtherPool Stats
 
 **example output**
 
+* *The **blue** line is the amount of ether mined* 
+
+* *the orange line is the **MH/s** (mega-hashes per second) reported by the pool*
+
 ![alt text](http://i.imgur.com/ziXGSQT.png =700x350 "Logo Title Text 1")
 
 
