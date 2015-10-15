@@ -4,7 +4,13 @@ EtherPool Stats
 * no longer works due to cloudflare DDOS protection *
 * cloudscrape partially fixed this issue, but cuts off after 50 requests from the same IP *
 
+
 ###Purpose:
+
+**example output**
+
+![alt text](http://i.imgur.com/ziXGSQT.png =700x350 "Logo Title Text 1")
+
 
 This app is built on top of two modest python scripts and api integration with Plotly for streaming charts.
 
