@@ -14,7 +14,7 @@ EtherPool Stats
 * *the* **orange** *line is mining speed in MH/s (mega-hashes per second) reported by the pool*
 
 ![alt text]
-(http://i.imgur.com/ziXGSQT.png =700x350 "Logo Title Text 1")
+(http://i.imgur.com/ziXGSQT.png)
 
 
 This app is built on top of two modest python scripts and api integration with Plotly for streaming charts.
